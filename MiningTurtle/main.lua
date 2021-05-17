@@ -1,7 +1,8 @@
 turtle.refuel()
-local Blocks = io.read()
-for local i = Blocks, 10
+local Blocks = io.read("How many Blocks: ")
+for local i = Blocks, Blocks
 do
     turtle.forward()
-    turle.dig()
+    turtle.dig()
+    turtle.forward
 end
