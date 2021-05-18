@@ -22,8 +22,10 @@ for j=1,b,1 do
         turtle.turnLeft()
         if turtle.detect()  == true then 
             turtle.dig()    
+            turtle.forward()
+        else
+            turtle.forward()
         end
-        turtle.forward()
         turtle.turnLeft()
         turn = 2
     elseif turn == 2 then
@@ -31,8 +33,11 @@ for j=1,b,1 do
         turtle.turnRight()
         if turtle.detect()  == true then 
             turtle.dig()    
+            turtle.forward()
+        else
+            turtle.forward()
         end
-        turtle.forward()
+        
         turtle.turnRight()
         turn = 1
     end
@@ -40,6 +45,7 @@ for j=1,b,1 do
     for i=1,a,1 do
         if turtle.detect()  == true then 
             turtle.dig() 
+            turtle.forward()
         else
             turtle.forward()
         end 
