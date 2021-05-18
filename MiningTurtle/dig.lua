@@ -51,6 +51,6 @@ for j=1,b,1 do
         end 
     end
 
-    turn = 1
+    if turn == 0 then turn =1 end
 
 end
