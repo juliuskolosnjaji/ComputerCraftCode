@@ -42,7 +42,7 @@ for j=1,b,1 do
         turn = 1
     end
     
-    for i=1,a,1 do
+    for i=2,a,1 do
         if turtle.detect()  == true then 
             turtle.dig() 
             turtle.forward()
