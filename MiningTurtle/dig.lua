@@ -13,24 +13,11 @@ local Areal = a * b
 io.write("Areal to dig ", Areal, "Blocks.")
 io.write("Digging...")
 
+local turn = 0
 
-for j=1,b,1 do
-    
-    io.write("Areal to dig j", j, "Blocks.")
+for j=1,b,1 do    
 
-    for i=1,a,1 do
-        if turtle.detect()  == true then 
-            turtle.dig() 
-            io.write("Areal to dig i", i, "Blocks.")
-        else
-            turtle.forward()
-        end 
-    end
-
-    local turn = true
-  
-
-    if turn == true then
+    if turn == 1 then
         -- links 2xdrehen
         turtle.turnLeft()
         if turtle.detect()  == true then 
@@ -38,8 +25,8 @@ for j=1,b,1 do
         end
         turtle.forward()
         turtle.turnLeft()
-        turn = false
-    else
+        turn = 2
+    elseif turn == 2 then
         -- rechts 2xdrehen
         turtle.turnRight()
         if turtle.detect()  == true then 
@@ -47,9 +34,17 @@ for j=1,b,1 do
         end
         turtle.forward()
         turtle.turnRight()
-        turn = true
+        turn = 1
     end
     
+    for i=1,a,1 do
+        if turtle.detect()  == true then 
+            turtle.dig() 
+        else
+            turtle.forward()
+        end 
+    end
 
+    turn = 1
 
 end
