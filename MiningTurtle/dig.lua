@@ -39,7 +39,7 @@ do
         turtle.forward()
     end
 
-    turtle.turnRight())
+    turtle.turnRight()
     turtle.dig()
     turtle.forward()
     turtle.turnRight()
