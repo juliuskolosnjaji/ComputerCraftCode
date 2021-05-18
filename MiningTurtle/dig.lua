@@ -12,56 +12,35 @@ local ende=0
 
 local Areal = a * b
 io.write("Areal to dig ", Areal, "Blocks.")
+io.write("Digging...")
 
-function turnleft()
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.forward()
-end
 
-function turnright()
-    turtle.turnRight()
-    turtle.dig()
-    turtle.forward()
-end
-
-function digleft()
-    for i = 1, a
-    do
-        turtle.dig()
-        turtle.forward()
-        isleft=true
-    end
-end
-
-local isleft = false
-local isright = false
 
 for i = 1, b
 do
     for i = 1, a
+    do  
+        if turtle.detect() == true
+        then
+            turtle.forward()
+        end
+        turtle.dig()
+        turtle.forward()
+    end
+
+    turtle.turnLeft()
+    turtle.dig()
+    turtle.forward()
+    turtle.turnLeft()
+
+    for i = 2, a
     do
         turtle.dig()
         turtle.forward()
-        isleft=true
-    end
-    
-    if isleft == true then
-        turnleft()
-        isleft=false
     end
 
-    if isleft == false then
-        for i = 1, a
-        do
-          turtle.dig()
-          turtle.forward()
-          isright = true
-        end
-    
-        if isright == true then
-            turnright()
-            digleft()
-        end
-    end
+    turtle.turnRight())
+    turtle.dig()
+    turtle.forward()
+    turtle.turnRight()
 end
