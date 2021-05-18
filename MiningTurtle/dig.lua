@@ -14,32 +14,22 @@ io.write("Areal to dig ", Areal, "Blocks.")
 io.write("Digging...")
 
 
-
-for i = 1, b
-do
-    for i = 1, a
-    do  
-        if turtle.detect() == true
-        then
+for j=0,b,1 do
+    
+    for i=0,a,1 do
+        if turtle.detect()  == true then 
+            turtle.dig() 
+        else
             turtle.forward()
-        end
-        turtle.dig()
-        turtle.forward()
+        end 
     end
 
+    -- links 2xdrehen
     turtle.turnLeft()
-    turtle.dig()
+    if turtle.detect()  == true then 
+        turtle.dig()    
+    end
     turtle.forward()
     turtle.turnLeft()
 
-    for i = 1, a
-    do
-        turtle.dig()
-        turtle.forward()
-    end
-
-    turtle.turnRight()
-    turtle.dig()
-    turtle.forward()
-    turtle.turnRight()
 end
