@@ -3,7 +3,6 @@ turtle.refuel()
 io.write("Specify Side a: ")
 local a = io.read()
 a = tonumber(a)
-a = a-1
 io.write("Specify Side b: ")
 local b = io.read()
 b = tonumber(b)
@@ -33,7 +32,7 @@ do
     turtle.forward()
     turtle.turnLeft()
 
-    for i = 2, a
+    for i = 1, a
     do
         turtle.dig()
         turtle.forward()
