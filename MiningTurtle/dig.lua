@@ -16,9 +16,12 @@ io.write("Digging...")
 
 for j=1,b,1 do
     
+    io.write("Areal to dig j", j, "Blocks.")
+
     for i=1,a,1 do
         if turtle.detect()  == true then 
             turtle.dig() 
+            io.write("Areal to dig i", i, "Blocks.")
         else
             turtle.forward()
         end 
@@ -46,5 +49,7 @@ for j=1,b,1 do
         turtle.turnRight()
         turn = true
     end
+    
+
 
 end
