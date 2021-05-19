@@ -1,5 +1,6 @@
 local turtlex, turtley, turtlez = gps.locate()
 print(turtlex, turtley, turtlez)
+getdirection()
 
 function getdirection()
     turtle.forward()
@@ -12,15 +13,15 @@ function getdirection()
     local facingnorth = false
 
     if currentx < turtlex then
-        facingeast = true          
-    elseif currentx > turtlex 
-        facingwest = true
+        facingwest = true        
+    elseif currentx > turtlex then
+        facingeast = true  
     end
 
    
     if currentz < turtlez then
         facingnorth = true
-    elseif currentz > turtlez
+    elseif currentz > turtlez then
         facingsouth = true
     end
 
