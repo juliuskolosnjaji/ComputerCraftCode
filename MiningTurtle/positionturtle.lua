@@ -31,6 +31,7 @@ function lookwest()
     while orientation ~= 1 
     do
         turtle.turnLeft()
+        orientation = ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
     end
 end
 
@@ -38,6 +39,7 @@ function lookeast()
     while orientation ~= 3
     do
         turtle.turnLeft()
+        orientation = ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
     end
 end
 
@@ -45,6 +47,7 @@ function looknorth()
     while orientation ~= 2
     do
         turtle.turnLeft()
+        orientation = ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
     end
 end
 
@@ -52,6 +55,7 @@ function looksouth()
     while orientation ~= 4
     do
         turtle.turnLeft()
+        orientation = ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
     end
 end
 
@@ -59,16 +63,19 @@ function goto(xTarget, yTarget, zTarget)
     while yTarget < yCoord
     do
         turtle.down()
+        xCoord, yCoord, zCoord = gps.locate()
     end
     while yTarget > yCoord
     do
         turtle.up()
+        xCoord, yCoord, zCoord = gps.locate()
     end
     if xTarget < xCoord then
         lookwest()
         while xTarget < xCoord
         do
             turtle.forward()
+            xCoord, yCoord, zCoord = gps.locate()
         end
     end
     if xTarget > xCoord then
@@ -76,6 +83,7 @@ function goto(xTarget, yTarget, zTarget)
         while xTarget > xCoord 
         do
             turtle.forward()
+            xCoord, yCoord, zCoord = gps.locate()
         end
     end
     if zTarget < zCoord then
@@ -83,6 +91,7 @@ function goto(xTarget, yTarget, zTarget)
         while zTarget < xCoord
         do
             turtle.forward()
+            xCoord, yCoord, zCoord = gps.locate()
         end
     end
     if zTarget > zCoord then
@@ -90,6 +99,7 @@ function goto(xTarget, yTarget, zTarget)
         while zTarget > zCoord
         do
             turtle.forward()
+            xCoord, yCoord, zCoord = gps.locate()
         end
     end
 end
