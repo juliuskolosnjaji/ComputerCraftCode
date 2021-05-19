@@ -3,25 +3,6 @@ print(turtlex, turtley, turtlez)
 
 Targetx, Targety, Targetz = io.read()
 
-
- 
-
-
-
-
-if currentx < turtlex then
-    facingwest = true        
-elseif currentx > turtlex then
-    facingeast = true  
-end
-
-
-if currentz < turtlez then
-    facingnorth = true
-elseif currentz > turtlez then
-    facingsouth = true
-end
-
 function moveto()
     turtle.forward()
     local abstandz = turtlez-Targetz
