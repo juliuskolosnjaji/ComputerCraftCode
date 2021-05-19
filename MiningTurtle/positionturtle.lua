@@ -8,6 +8,10 @@ zTarget = io.read()
 
 xCoord, yCoord, zCoord = gps.locate()
 
+xTarget = tonumber(xTarget)
+yTarget = tonumber(yTarget)
+zTarget = tonumber(zTarget)
+
 function getOrientation()
     loc1 = vector.new(gps.locate(2, false))
     if not turtle.forward() then
