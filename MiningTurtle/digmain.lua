@@ -65,7 +65,8 @@ for g = 1, c, 1 do
     if turtle.detect() == true then
         turtle.turnLeft()
     end
-    while turtle.detect() == true then
+    while turtle.detect() == true 
+    do
         turtle.forward()
     end
     if turtle.detect() == true then
