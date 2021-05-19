@@ -1,51 +1,30 @@
 local turtlex, turtley, turtlez = gps.locate()
+print(turtlex, turtley, turtlez)
 
 function getdirection()
     turtle.forward()
     local currentx, currenty, currentz = gps.locate()
+    print(currentx, currenty, currentz)
+
+    local facingeast = false  
+    local facingwest = false 
+    local facingsouth = false
+    local facingnorth = false
+
     if currentx < turtlex then
-        local facingeast = true
-        turtle.back()
-    else
-        local facingeast = false
-        turtle.back()
+        facingeast = true          
+    elseif currentx > turtlex 
+        facingwest = true
     end
 
-    turtle.back()
-    currentx, currenty, currentz = gps.locate()
-    if currentx > turtlex then
-        local facingwest = true
-        turtle.forward()
-    else
-        facingwest = false
-        turtle.forward()
-    end
-
-    turtle.turnLeft()
-    turtle.forward()
-    currentx, currenty, currentz = gps.locate()
+   
     if currentz < turtlez then
-        local facingnorth = true
-        turtle.back()
-        turtle.turnRight()
-    else
-        facingnorth = false
-        turtle.back()
-        turtle.turnRight()
+        facingnorth = true
+    elseif currentz > turtlez
+        facingsouth = true
     end
 
-    turtle.turnRight()
-    turtle.forward()
-    currentx, currenty, currentz = gps.locate()
-    if currentz > turtlez then
-        local facingsouth = true
-        turtle.back()
-        turtle.turnLeft()
-    else
-        facingsouth = false
-        turtle.back()
-        turtle.turnLeft()
-    end
+   
     print("Facing east: ",facingeast)
     print("Facing west: ", facingwest)
     print("Facing north: ", facingnorth)
