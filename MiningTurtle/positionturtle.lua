@@ -69,7 +69,8 @@ function goto(xTarget, yTarget, zTarget)
     end
     if xTarget > xCoord then
         lookeast()
-        while xTarget > xCoord then
+        while xTarget > xCoord 
+        do
             turtle.forward()
         end
     end
