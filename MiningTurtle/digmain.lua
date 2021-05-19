@@ -57,5 +57,13 @@ for g = 1, c, 1 do
 
         if turn == 0 then turn =1 end
     end
-    turtle.digDown()
+    turtle.turnLeft()
+    while turtle.detect() == false 
+    do
+        turtle.forward()
+    end
+    if turtle.detect() == true then
+        turtle.turnLeft()
+        turtle.digDown()
+    end
 end
