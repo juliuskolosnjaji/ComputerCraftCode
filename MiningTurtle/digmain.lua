@@ -74,4 +74,5 @@ for g = 1, c, 1 do
     end
     turtle.digDown()
     turtle.down()
+    turn = 0
 end
