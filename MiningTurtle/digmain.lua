@@ -17,10 +17,10 @@ local c = io.read()
 c = tonumber(c)
 
 local KEEP_ITEMS = {
-    minecraft:diamond_ore,
-    minecraft:iron_ore,
-    minecraft:coal_ore,
-    minecraft:ancient_debris,
+    "minecraft:diamond_ore",
+    "minecraft:iron_ore",
+    "minecraft:coal_ore",
+    "minecraft:ancient_debris"
 }
 
 function dropItemsFromList()
