@@ -1,10 +1,10 @@
 xTarget = io.read()
 yTarget = io.read()
 zTarget = io.read()
-west = orientation[1]
-north = orientation[2]
-east = orientation[3]
-south = orientation[4]
+--west = orientation[1]
+--north = orientation[2]
+--east = orientation[3]
+--south = orientation[4]
 
 xCoord, yCoord, zCoord = gps.locate()
 
@@ -20,32 +20,32 @@ function getOrientation()
     loc2 = vector.new(gps.locate(2, false))
     heading = loc2 - loc1
     print ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
-    local orientation = ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
+    orientation = ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
 end
 
 function lookwest()
-    while orientation ~= west 
+    while orientation ~= 1 
     do
         turtle.turnLeft()
     end
 end
 
 function lookeast()
-    while orientation ~= east
+    while orientation ~= 3
     do
         turtle.turnLeft()
     end
 end
 
 function looknorth()
-    while orientation ~= north
+    while orientation ~= 2
     do
         turtle.turnLeft()
     end
 end
 
 function looksouth()
-    while orientation ~= south
+    while orientation ~= 4
     do
         turtle.turnLeft()
     end
