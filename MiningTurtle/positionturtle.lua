@@ -8,15 +8,24 @@ Targetz = io.read()
 function moveto()
     turtle.forward()
     local abstandz = turtlez-Targetz
+    print(abstandz)
     local currentx, currenty, currentz = gps.locate()
     
     if currentz == abstandz then
-        turtle.turnLeft()
+        turtle.turnRight()
         moveto()
     if currentz > abstandz then
-        turtle.turnLeft()
-        turtle.turnLeft()
+        turtle.turnRight()
+        turtle.turnRight()
     end
+    if currentz < abstandz then
+        for i = 1, abstandz 
+        do
+            turtle.forward()
+            if turtle.detect() == true then
+                turtle.dig()
+            end
+        end
     end
 end
 
