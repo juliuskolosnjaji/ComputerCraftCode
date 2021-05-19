@@ -6,10 +6,11 @@ Targety = io.read()
 Targetz = io.read()
 
 function moveto()
-    turtle.forward()
     local abstandz = turtlez-Targetz
+    turtle.forward()
     print(abstandz)
     local currentx, currenty, currentz = gps.locate()
+    abstandz = currentz - Targetz
     
     if currentz == abstandz then
         turtle.turnRight()
@@ -28,5 +29,5 @@ function moveto()
         end
     end
 end
-
+end
 moveto()
