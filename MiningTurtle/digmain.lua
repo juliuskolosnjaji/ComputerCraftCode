@@ -1,5 +1,9 @@
 turtle.refuel()
-
+flevel = turtle.getFuelLevel()
+io.write(flevel)
+if flevel <= 100 then
+    print("Fuel level below 100. Please refill coal.")
+end
 io.write("Specify Side a: ")
 local a = io.read()
 a = tonumber(a)
@@ -10,10 +14,12 @@ io.write("Specify Side c: ")
 local c = io.read()
 c = tonumber(c)
 
+
+
 local ende=0
 
-local Areal = a * b
-io.write("Areal to dig ", Areal, "Blocks.")
+local Area = a * b * c
+io.write("Area to dig: ", Area, "Blocks.")
 io.write("Digging...")
 
 local turn = 0
