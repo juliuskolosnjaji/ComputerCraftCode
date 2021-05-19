@@ -1,33 +1,45 @@
 local turtlex, turtley, turtlez = gps.locate()
 print(turtlex, turtley, turtlez)
-getdirection()
 
-function getdirection()
+Targetx, Targety, Targetz = io.read()
+
+
+ 
+
+
+
+
+if currentx < turtlex then
+    facingwest = true        
+elseif currentx > turtlex then
+    facingeast = true  
+end
+
+
+if currentz < turtlez then
+    facingnorth = true
+elseif currentz > turtlez then
+    facingsouth = true
+end
+
+function moveto()
     turtle.forward()
+    local abstandz = turtlez-Targetz
     local currentx, currenty, currentz = gps.locate()
-    print(currentx, currenty, currentz)
 
-    local facingeast = false  
-    local facingwest = false 
-    local facingsouth = false
-    local facingnorth = false
-
-    if currentx < turtlex then
-        facingwest = true        
-    elseif currentx > turtlex then
-        facingeast = true  
+    if currentz > abstandz then
+        turtle.turnLeft()
+        turtle.turnLeft()
     end
-
-   
-    if currentz < turtlez then
-        facingnorth = true
-    elseif currentz > turtlez then
-        facingsouth = true
+    if currentz == abstandz then
+        turtle.turnLeft()
+        moveto()
     end
-
-   
-    print("Facing east: ",facingeast)
-    print("Facing west: ", facingwest)
-    print("Facing north: ", facingnorth)
-    print("Facing south: ", facingsouth)
+    for i = 1, Targetz 
+    do
+        turtle.forward()
+        if turtle.detect() == true then
+            turtle.dig()
+        end
+    end
 end
