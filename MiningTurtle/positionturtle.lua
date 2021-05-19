@@ -31,7 +31,7 @@ function lookwest()
     while orientation ~= 1 
     do
         turtle.turnLeft()
-        orientation = ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
+        getOrientation()
     end
 end
 
@@ -39,7 +39,6 @@ function lookeast()
     while orientation ~= 3
     do
         turtle.turnLeft()
-        orientation = ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
     end
 end
 
@@ -47,7 +46,7 @@ function looknorth()
     while orientation ~= 2
     do
         turtle.turnLeft()
-        orientation = ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
+        getOrientation()
     end
 end
 
@@ -55,7 +54,7 @@ function looksouth()
     while orientation ~= 4
     do
         turtle.turnLeft()
-        orientation = ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
+        getOrientation()
     end
 end
 
