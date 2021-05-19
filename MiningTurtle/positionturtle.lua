@@ -1,114 +1,53 @@
-xTarget = io.read()
-yTarget = io.read()
-zTarget = io.read()
---west = orientation[1]
---north = orientation[2]
---east = orientation[3]
---south = orientation[4]
+local turtlex, turtley, turtlez = gps.locate()
 
-xCoord, yCoord, zCoord = gps.locate()
-
-xTarget = tonumber(xTarget)
-yTarget = tonumber(yTarget)
-zTarget = tonumber(zTarget)
-
-function getOrientation()
-    loc1 = vector.new(gps.locate(2, false))
-    if not turtle.forward() then
-        for j=1,6 do
-                if not turtle.forward() then
-                        turtle.dig()
-             else break end
-        end
+function getdirection()
+    turtle.forward()
+    local currentx, currenty, currentz = gps.locate()
+    if currentx < turtlex then
+        local facingeast = true
+        turtle.back()
+    else
+        local facingeast = false
+        turtle.back()
     end
-    loc2 = vector.new(gps.locate(2, false))
-    heading = loc2 - loc1
-    print ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
-    orientation = ((heading.x + math.abs(heading.x) * 2) + (heading.z + math.abs(heading.z) * 3))
-end
 
-function lookwest()
-    while orientation ~= 1 
-    do
+    turtle.back()
+    currentx, currenty, currentz = gps.locate()
+    if currentx > turtlex then
+        local facingwest = true
+        turtle.forward()
+    else
+        facingwest = false
+        turtle.forward()
+    end
+
+    turtle.turnLeft()
+    turtle.forward()
+    currentx, currenty, currentz = gps.locate()
+    if currentz < turtlez then
+        local facingnorth = true
+        turtle.back()
+        turtle.turnRight()
+    else
+        facingnorth = false
+        turtle.back()
+        turtle.turnRight()
+    end
+
+    turtle.turnRight()
+    turtle.forward()
+    currentx, currenty, currentz = gps.locate()
+    if currentz > turtlez then
+        local facingsouth = true
+        turtle.back()
         turtle.turnLeft()
-        getOrientation()
-    end
-end
-
-function lookeast()
-    while orientation ~= 3
-    do
+    else
+        facingsouth = false
+        turtle.back()
         turtle.turnLeft()
     end
+    print("Facing east: ",facingeast)
+    print("Facing west: ", facingwest)
+    print("Facing north: ", facingnorth)
+    print("Facing south: ", facingsouth)
 end
-
-function looknorth()
-    while orientation ~= 2
-    do
-        turtle.turnLeft()
-        getOrientation()
-    end
-end
-
-function looksouth()
-    while orientation ~= 4
-    do
-        turtle.turnLeft()
-        getOrientation()
-    end
-end
-
-function goto(xTarget, yTarget, zTarget)
-    while yTarget < yCoord
-    do
-        turtle.down()
-        xCoord, yCoord, zCoord = gps.locate()
-    end
-    while yTarget > yCoord
-    do
-        turtle.up()
-        xCoord, yCoord, zCoord = gps.locate()
-    end
-    if xTarget < xCoord then
-        lookwest()
-        while xTarget < xCoord
-        do
-            turtle.forward()
-            xCoord, yCoord, zCoord = gps.locate()
-        end
-    end
-    if xTarget > xCoord then
-        lookeast()
-        while xTarget > xCoord 
-        do
-            turtle.forward()
-            xCoord, yCoord, zCoord = gps.locate()
-        end
-    end
-    if zTarget < zCoord then
-        looknorth()
-        while zTarget < xCoord
-        do
-            turtle.forward()
-            xCoord, yCoord, zCoord = gps.locate()
-        end
-    end
-    if zTarget > zCoord then
-        looksouth()
-        while zTarget > zCoord
-        do
-            turtle.forward()
-            xCoord, yCoord, zCoord = gps.locate()
-        end
-    end
-end
-
---[[orientation will be:
--x = 1
--z = 2
-+x = 3
-+z = 4
-This matches exactly with orientation in game, except that Minecraft uses 0 for +z instead of 4.
---]]
-goto(xTarget, yTarget, zTarget)
-getOrientation()
