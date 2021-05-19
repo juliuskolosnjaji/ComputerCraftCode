@@ -1,7 +1,9 @@
 local turtlex, turtley, turtlez = gps.locate()
 print(turtlex, turtley, turtlez)
 
-Targetx, Targety, Targetz = io.read()
+Targetx = io.read()
+Targety = io.read()
+Targetz = io.read()
 
 function moveto()
     turtle.forward()
