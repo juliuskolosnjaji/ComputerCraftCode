@@ -1,3 +1,5 @@
+local SLOT_COUNT = 16
+
 turtle.refuel()
 flevel = turtle.getFuelLevel()
 io.write(flevel)
@@ -14,13 +16,43 @@ io.write("Specify Side c: ")
 local c = io.read()
 c = tonumber(c)
 
+local KEEP_ITEMS = {
+    minecraft:diamond_ore,
+    minecraft:iron_ore,
+    minecraft:coal_ore,
+    minecraft:ancient_debris,
+}
 
+function dropItemsFromList()
+    print("Purging Inventory...")
+ 
+    for slot = 1, SLOT_COUNT, 1 do
+        local item = turtle.getItemDetail(slot)
+        local keepItem = false
+        if(item ~= nil) then
+            for keepItemIndex = 1, #KEEP_ITEMS, 1 do
+                if(item["name"] == KEEP_ITEMS[keepItemIndex]) then
+                    keepItem = true
+                end
+ 
+                print(item["name"])
+                print(KEEP_ITEMS[keepItemIndex])
+                print(item["name"] == KEEP_ITEMS[keepItemIndex])
+ 
+                if(not keepItem) then
+                    turtle.select(slot)
+                    turtle.dropDown()
+                end
+            end
+        end
+    end 
+end
 
 local ende=0
 
 local Area = a * b * c
-io.write("Area to dig: ", Area, "Blocks.")
-io.write("Digging...")
+print("Area to dig: ", Area, "Blocks.")
+print("Digging...")
 
 local turn = 0
 
@@ -81,4 +113,5 @@ for g = 1, c, 1 do
     turtle.digDown()
     turtle.down()
     turn = 0
+    dropItemsFromList()
 end
