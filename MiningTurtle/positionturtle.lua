@@ -11,13 +11,13 @@ function moveto()
     print(abstandz)
     local currentx, currenty, currentz = gps.locate()
     local abstandz_current = currentz - Targetz
-    
-    if abstandz == abstandz_current then
-        turtle.turnRight()
-        moveto()
     if abstandz > abstandz_current then
         turtle.turnRight()
         turtle.turnRight()
+    end
+    if abstandz == abstandz_current then
+        turtle.turnRight()
+        moveto()
     end
     if abstandz < abstandz_current then
         for i = 1, abstandz 
@@ -28,6 +28,5 @@ function moveto()
             end
         end
     end
-end
 end
 moveto()
