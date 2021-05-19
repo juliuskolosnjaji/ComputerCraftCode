@@ -10,16 +10,16 @@ function moveto()
     turtle.forward()
     print(abstandz)
     local currentx, currenty, currentz = gps.locate()
-    abstandz = currentz - Targetz
+    local abstandz_current = currentz - Targetz
     
-    if currentz == abstandz then
+    if abstandz == abstandz_current then
         turtle.turnRight()
         moveto()
-    if currentz > abstandz then
+    if abstandz > abstandz_current then
         turtle.turnRight()
         turtle.turnRight()
     end
-    if currentz < abstandz then
+    if abstandz < abstandz_current then
         for i = 1, abstandz 
         do
             turtle.forward()
