@@ -96,5 +96,5 @@ end
 +z = 4
 This matches exactly with orientation in game, except that Minecraft uses 0 for +z instead of 4.
 --]]
-goto(-181, 4, 289)
+goto(xTarget, yTarget, zTarget)
 getOrientation()
