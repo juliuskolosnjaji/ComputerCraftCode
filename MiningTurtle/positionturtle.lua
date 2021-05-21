@@ -23,13 +23,6 @@ function moveto()
         abstandz_current = math.abs(abstandz_current)
         turtle.turnLeft()
         turtle.turnLeft()
-        for i = 1, abstandz_current
-        do
-            turtle.forward()
-            if turtle.detect() == true then
-                turtle.dig()
-            end
-        end
     end
     if abstandz < abstandz_current then
         for i = 1, abstandz 
