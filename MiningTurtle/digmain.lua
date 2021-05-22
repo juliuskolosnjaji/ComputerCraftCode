@@ -63,7 +63,9 @@ for g = 1, c, 1 do
             -- links 2xdrehen
             turtle.turnLeft()
             if turtle.detect()  == true then 
-                turtle.dig()    
+                turtle.dig()
+                turtle.digUp()
+                turtle.digDown()    
                 turtle.forward()
             else
                 turtle.forward()
@@ -75,6 +77,8 @@ for g = 1, c, 1 do
             turtle.turnRight()
             if turtle.detect()  == true then 
                 turtle.dig()    
+                turtle.digUp()
+                turtle.digDown() 
                 turtle.forward()
             else
                 turtle.forward()
@@ -86,7 +90,9 @@ for g = 1, c, 1 do
         
         for i=2,a,1 do
             if turtle.detect()  == true then 
-                turtle.dig() 
+                turtle.dig()
+                turtle.digUp()
+                turtle.digDown()  
                 turtle.forward()
             else
                 turtle.forward()
