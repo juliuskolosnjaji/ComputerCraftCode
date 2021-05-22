@@ -65,24 +65,19 @@ for g = 1, c, 1 do
             if turtle.detect()  == true then 
                 turtle.dig()    
                 turtle.forward()
-                dropItemsFromList
             else
                 turtle.forward()
-                dropItemsFromList
             end
             turtle.turnLeft()
             turn = 2
         elseif turn == 2 then
             -- rechts 2xdrehen
             turtle.turnRight()
-            dropItemsFromList
             if turtle.detect()  == true then 
                 turtle.dig()    
                 turtle.forward()
-                dropItemsFromList
             else
                 turtle.forward()
-                dropItemsFromList
             end
             
             turtle.turnRight()
@@ -93,10 +88,8 @@ for g = 1, c, 1 do
             if turtle.detect()  == true then 
                 turtle.dig() 
                 turtle.forward()
-                dropItemsFromList
             else
                 turtle.forward()
-                dropItemsFromList
             end 
         end
 
@@ -106,20 +99,16 @@ for g = 1, c, 1 do
     while turtle.detect() == false 
     do
         turtle.forward()
-        dropItemsFromList
     end
     if turtle.detect() == true then
         turtle.turnLeft()
-        dropItemsFromList
     end
     while turtle.detect() == true 
     do
         turtle.forward()
-        dropItemsFromList
     end
     if turtle.detect() == true then
         turtle.turnLeft()
-        dropItemsFromList
     end
     turtle.digDown()
     turtle.down()
