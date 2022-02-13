@@ -113,7 +113,7 @@ for g = 1, c, 1 do
     do
         turtle.forward()
     end
-    if turtle.detect() or turtle.detectUp() or turtle.detectDown() == true then
+    if turtle.detect() == true then
         turtle.turnLeft()
     end
     turtle.digDown()
