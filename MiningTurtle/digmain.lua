@@ -62,7 +62,7 @@ for g = 1, c, 1 do
         if turn == 1 then
             -- links 2xdrehen
             turtle.turnLeft()
-            if turtle.detect()  == true then 
+            if turtle.detect() or turtle.detectUp() or turtle.detectDown()  == true then 
                 turtle.dig()
                 turtle.digUp()
                 turtle.digDown()    
@@ -75,7 +75,7 @@ for g = 1, c, 1 do
         elseif turn == 2 then
             -- rechts 2xdrehen
             turtle.turnRight()
-            if turtle.detect()  == true then 
+            if turtle.detect() or turtle.detectUp() or turtle.detectDown() == true then 
                 turtle.dig()    
                 turtle.digUp()
                 turtle.digDown() 
@@ -89,7 +89,7 @@ for g = 1, c, 1 do
         end
         
         for i=2,a,1 do
-            if turtle.detect()  == true then 
+            if turtle.detect() or turtle.detectUp() or turtle.detectDown() == true then 
                 turtle.dig()
                 turtle.digUp()
                 turtle.digDown()  
@@ -102,18 +102,18 @@ for g = 1, c, 1 do
         if turn == 0 then turn =1 end
     end
     turtle.turnLeft()
-    while turtle.detect() == false 
+    while turtle.detect() or turtle.detectUp() or turtle.detectDown() == false 
     do
         turtle.forward()
     end
-    if turtle.detect() == true then
+    if turtle.detect() or turtle.detectUp() or turtle.detectDown() == true then
         turtle.turnLeft()
     end
-    while turtle.detect() == true 
+    while turtle.detect() or turtle.detectUp() or turtle.detectDown() == true 
     do
         turtle.forward()
     end
-    if turtle.detect() == true then
+    if turtle.detect() or turtle.detectUp() or turtle.detectDown() == true then
         turtle.turnLeft()
     end
     turtle.digDown()
