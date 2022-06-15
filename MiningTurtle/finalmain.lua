@@ -101,21 +101,21 @@ function riseTier()
     turtle.turnRight()
     turtle.turnRight()
     changeDirection()
-    turtle.digUp()
+    turtle.digDown()
     turtle.down()
 end
 
 function turnAround(tier)
     if(tier % 2 == 1) then
-        if(d == "north" or d == "east") then
+        if(direction == "north" or direction == "east") then
             rightTurn()
-        elseif(d == "south" or d == "west") then
+        elseif(direction == "south" or direction == "west") then
             leftTurn()
         end
     else
-        if(d == "north" or d == "east") then
+        if(direction == "north" or direction == "east") then
             leftTurn()
-        elseif(d == "south" or d == "west") then
+        elseif(direction == "south" or direction == "west") then
             rightTurn()
         end
     end
