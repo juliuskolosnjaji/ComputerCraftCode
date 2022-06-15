@@ -53,20 +53,7 @@ function refuel()
     end
 end
 
-function changeDirection()
-    if(direction == "north") then
-        direction = "south"
-    end
-    if(direction == "south") then
-        direction = "north"
-    end
-    if(direction == "west") then
-        direction = "east"
-    end
-    if(direction == "east") then
-        direction = "west"
-    end
-end
+
 
 function detectdig()
     while (turtle.detect()) do
@@ -97,6 +84,19 @@ function rightTurn()
     detectdig()
 end
 
+function changeDirection()
+    if(direction == "north") then
+        direction = "south"
+    elseif(direction == "south") then
+        direction = "north"
+    elseif(direction == "west") then
+        direction = "east"
+    elseif(direction == "east") then
+        direction = "west"
+    end
+ 
+end
+
 function riseTier()
     turtle.turnRight()
     turtle.turnRight()
@@ -121,6 +121,7 @@ function turnAround(tier)
     end
     changeDirection()
 end
+
 
 function dropItems()
     print("Purging Inventory...")
@@ -158,7 +159,7 @@ function startDiggin()
 
     for tier = 1, h, 1 do
         for col = 1, w, 1 do
-            for row = 1, d, 1 do
+            for row = 1, d - 1, 1 do
                 if(not refuel()) then
                     print("No fuel. Stopping ...")
                     return
