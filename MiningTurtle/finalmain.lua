@@ -5,7 +5,7 @@ local direction = "north"
 io.write("Width: ")
 local w = io.read()
 w = tonumber(w)
-io.write("depth ")
+io.write("Depth: ")
 local d = io.read()
 d = tonumber(d)
 io.write("Height: ")
@@ -149,9 +149,34 @@ function dropItems()
     end
 end
 
-function manageInventory()
+function dropItemsFromList()
+    print("Purging Inventory...")
+ 
+    for slot = 1, SlotCount, 1 do
+        local item = turtle.getItemDetail(slot)
+        local keepItem = false
+        if(item ~= nil) then
+            for keepItemIndex = 1, #WANTED_ITEMS, 1 do
+                if(item["name"] == WANTED_ITEMS[keepItemIndex]) then
+                    keepItem = true
+                end
+ 
+                print(item["name"])
+                print(WANTED_ITEMS[keepItemIndex])
+                print(item["name"] == WANTED_ITEMS[keepItemIndex])
+ 
+                if(not keepItem) then
+                    turtle.select(slot)
+                    turtle.dropDown()
+                end
+            end
+        end
+    end 
+end
 
-    dropItems()
+function manageInventory()
+    refuel()
+    dropItemsFromList()
     for slot = 1, SlotCount, 1 do
         local item = turtle.getItemDetail(slot)
         if(item ~= nil) then
