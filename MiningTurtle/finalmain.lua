@@ -43,6 +43,12 @@ FUEL_ITEMS = {
 }
 
 
+function getLength(T)
+    local count = 0
+    for _ in pairs(T) do count = count + 1 end
+    return count
+end
+
 function refuel()
     
     turtle.select(1)
@@ -155,8 +161,8 @@ function dropItemsFromList()
     for slot = 1, SlotCount, 1 do
         local item = turtle.getItemDetail(slot)
         local keepItem = false
-        if(item ~= nil) then
-            for keepItemIndex = 1, #WANTED_ITEMS, 1 do
+        if(item) then
+            for keepItemIndex = 1, getLength(WANTED_ITEMS), 1 do
                 if(item["name"] == WANTED_ITEMS[keepItemIndex]) then
                     keepItem = true
                 end

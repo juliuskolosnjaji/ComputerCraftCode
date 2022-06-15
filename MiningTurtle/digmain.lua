@@ -29,7 +29,7 @@ function dropItemsFromList()
     for slot = 1, SLOT_COUNT, 1 do
         local item = turtle.getItemDetail(slot)
         local keepItem = false
-        if(item ~= nil) then
+        if(item) then
             for keepItemIndex = 1, #KEEP_ITEMS, 1 do
                 if(item["name"] == KEEP_ITEMS[keepItemIndex]) then
                     keepItem = true
