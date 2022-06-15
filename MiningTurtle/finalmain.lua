@@ -20,16 +20,26 @@ if FuelLevel <= 100 then
 end
 
 WANTED_ITEMS = {
-    "minecraft:gold_ore",
-    "minecraft:deepslate_gold_ore",
-    "minecarft:redstone_ore",
-    "minecarft:deepslate_redstone_ore",
-    "minecraft:iron_ore",
-    "minecraft:deepslate_iron_ore",
-    "minecraft:diamond_ore",
-    "minecraft:deepslate_diamon_ore",
-    "minecraft:coal_ore",
-    "minecraft:deepslate_coal_ore"
+    "minecraft:raw_gold",
+    "minecraft:raw_iron",
+    "minecarft:redstone",
+    "minecarft:coal",
+    "minecraft:diamond",
+    "modern_industrialization:raw_lead",
+    "modern_industrialization:raw_silver",
+    "modern_industrialization:raw_tin",
+    "modern_industrialization:raw_titanium",
+    "modern_industrialization:raw_tungsten",
+    "modern_industrialization:raw_nickel",
+    "modern_industrialization:raw_antimony"
+}
+
+FUEL_ITEMS = {
+    "minecraft:coal",
+    "minecraft:coal_block",
+    "minecraft:charcoal",
+    "modern_industrialization:lignite_coal",
+    "modern_industrialization:lignite_coal_block",
 }
 
 
@@ -145,9 +155,11 @@ function manageInventory()
     for slot = 1, SlotCount, 1 do
         local item = turtle.getItemDetail(slot)
         if(item ~= nil) then
-            if(item["name"] ~= "minecraft:coal_block" and item["name"] ~= "minecraft:coal") then
-                turtle.select(slot)
-                turtle.dropUp()
+            for filterIndex = 1, #FUEL_ITEMS, 1 do
+                if(item["name"] ~= FUEL_ITEMS[filterIndex])then
+                    turtle.select(slot)
+                    turtle.dropUp()
+                end
             end
         end
     end
