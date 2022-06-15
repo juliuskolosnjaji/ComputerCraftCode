@@ -180,20 +180,42 @@ function dropItemsFromList()
     end 
 end
 
-function manageInventory()
-    refuel()
-    dropItemsFromList()
+function getChest()
+
     for slot = 1, SlotCount, 1 do
         local item = turtle.getItemDetail(slot)
         if(item ~= nil) then
-            for filterIndex = 1, #FUEL_ITEMS, 1 do
-                if(item["name"] ~= FUEL_ITEMS[filterIndex])then
-                    turtle.select(slot)
-                    turtle.dropUp()
-                end
+            if(item["name"] == "kibe:entangled_chest") then
+                return slot
             end
         end
     end
+    return nil
+    
+end
+
+function manageInventory()
+
+    index = getChest()
+
+    -- Deploy Chest
+    if(index ~= nil) then
+        turtle.select(index)
+        turtle.digUp()
+        turtle.placeUp()
+    end
+
+    for slot = 1, SlotCount, 1 do
+        local item = turtle.getItemDetail(slot)
+        if(item ~= nil) then
+            if(item["name"] ~= "minecraft:coal_block" and item["name"] ~= "minecraft:coal") then
+                turtle.select(slot)
+                turtle.dropUp()
+            end
+        end
+    end
+
+    turtle.digUp()
 
 
 end
